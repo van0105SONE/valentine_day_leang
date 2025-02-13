@@ -73,7 +73,7 @@ export default function Flower() {
     }
 
     fecthData();
-  }, [fecthData]);
+  }, []);
 
   const getWeightedRandomItem = (items: ValentineGift[], weights: number[]) => {
     if (items.length === 0 || items.length !== weights.length) {
