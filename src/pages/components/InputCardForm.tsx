@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 
 export interface SocialCardProps {
     callback: (username:string, message:string)=>void
@@ -8,10 +8,11 @@ const SocialCardForm = ({callback}:SocialCardProps) => {
   const [socialName, setSocialName] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle form submission here
     console.log({ socialName, message });
+
   };
 
   return (

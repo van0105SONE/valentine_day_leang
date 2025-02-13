@@ -12,19 +12,10 @@ export interface ValentineGift {
 export default function Flower() {
   const [isInput, setIsInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoad, setIsLoad] = useState(false);
   const [valentineGift, setValentineGift] = useState<ValentineGift | undefined>();
 
-  let usid = null;
-  useEffect(() => {
-    // Subscribe to changes in the 'posts' table
-    usid = localStorage.getItem("usid");
-    if (usid == "" || usid == null) {
-      setIsInput(true);
-    }
 
-    fecthData();
-  }, []);
+
 
   const addData = async (username: string, message: string) => {
     const supabase = await createClient();
@@ -40,12 +31,11 @@ export default function Flower() {
       } else {
         console.log("Congratulation........🎉");
         localStorage.setItem("usid", username);
-        usid = username;
         fecthData();
         setIsInput(false);
       }
     } else {
-      usid = data[0].facebook_name;
+      const  usid = data[0].facebook_name;
       localStorage.setItem("usid", usid);
       fecthData();
       setIsInput(false);
@@ -53,6 +43,7 @@ export default function Flower() {
   };
 
   const fecthData = async () => {
+    const usid = localStorage.getItem("usid");
     if (usid != "" || usid != null) {
       const supabase = await createClient();
 
@@ -73,6 +64,16 @@ export default function Flower() {
       });
     }
   };
+
+  useEffect(() => {
+    // Subscribe to changes in the 'posts' table
+    const usid = localStorage.getItem("usid");
+    if (usid == "" || usid == null) {
+      setIsInput(true);
+    }
+
+    fecthData();
+  }, [fecthData]);
 
   const getWeightedRandomItem = (items: ValentineGift[], weights: number[]) => {
     if (items.length === 0 || items.length !== weights.length) {
@@ -108,7 +109,7 @@ export default function Flower() {
         <div>
           <div className={`${styles.card} ${isOpen ? styles.open : ""}`} onClick={handleClick}>
             <div className={styles.cardFront}>
-              <h1>Happy Valentine's Day!</h1>
+              <h1>Happy Valentine&apos;s Day!</h1>
               <p>Click to open the card</p>
             </div>
             <div className={styles.cardInside}>
