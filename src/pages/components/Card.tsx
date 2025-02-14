@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import styles from "./Card.module.css";
 import FlowerAnimation from "./AnimationFlower";
 import Image from 'next/image';
@@ -9,16 +9,8 @@ export interface ValentineGift {
 }
 
 export default function Flower() {
-  const [isInput, setIsInput] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    // Subscribe to changes in the 'posts' table
-    const usid = localStorage.getItem("usid");
-    if (usid == "" || usid == null) {
-      setIsInput(true);
-    }
-  }, []);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
