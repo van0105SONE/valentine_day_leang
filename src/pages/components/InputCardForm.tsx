@@ -4,7 +4,7 @@ export interface SocialCardProps {
     callback: (username:string, message:string)=>void
 }
 
-const SocialCardForm = ({callback}:SocialCardProps) => {
+const SocialCardForm = () => {
   const [socialName, setSocialName] = useState('');
   const [message, setMessage] = useState('');
 
@@ -53,9 +53,6 @@ const SocialCardForm = ({callback}:SocialCardProps) => {
           <div className="flex justify-end">
             <button
               type="submit"
-              onClick={()=>{
-                callback(socialName, message)
-              }}
               className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Submit

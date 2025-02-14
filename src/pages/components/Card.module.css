@@ -17,7 +17,7 @@
 .card {
   position: relative;
   width: 300px;
-  height: 200px;
+  height: 800px;
   cursor: pointer;
   transform-style: preserve-3d;
   transition: transform 0.8s;
@@ -54,3 +54,4 @@
 .card.open {
   transform: rotateY(180deg);
 }
+
